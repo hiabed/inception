@@ -18,8 +18,8 @@ RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/ngin
 
 WORKDIR /
 
-COPY index.html /var/www/html
+COPY tools/index.html /var/www/html
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 CMD [ "nginx", "-g" ,"daemon off;"]
