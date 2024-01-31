@@ -1,10 +1,10 @@
 FROM debian:11
 
-RUN apt update -y && apt upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt install nginx -y
+RUN apt-get install nginx -y
 
-RUN apt install openssl -y
+RUN apt-get install openssl -y
 
 # #pour stocker le certificat et la clef.
 
@@ -14,12 +14,8 @@ RUN mkdir -p /etc/nginx/ssl
 
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=MA/ST=FMK/L=FES/O=1337/OU=42/CN=mhassani.42.fr/UID=mhassni"
 
-# #====>
+#COPY tools/index.html /var/www/html
 
-WORKDIR /
-
-COPY tools/index.html /var/www/html
-
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default.conf 
 
 CMD [ "nginx", "-g" ,"daemon off;"]
