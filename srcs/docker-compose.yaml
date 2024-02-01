@@ -8,6 +8,8 @@ services:
       - inception
     build: requirements/mariadb
     env_file: .env
+    volumes:
+      - mariadb:/var/lib/mysql
     ports:
       - "3306"
   ngnix:
@@ -17,6 +19,8 @@ services:
     - inception
     build: requirements/nginx
     env_file: .env
+    volumes:
+      - wordpress:/var/www/wordpress
     ports:
       - "443:443"
     depends_on:
@@ -28,10 +32,28 @@ services:
       - inception
     build: requirements/wordpress
     env_file: .env
+    volumes:
+      - wordpress:/var/www/wordpress
     ports:
       - "9000"
     depends_on:
       - "mariadb"
+
+volumes:
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/mhassani/data/wordpress'
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: 'none' 
+      o: 'bind'
+      device: '/home/mhassani/data/mariadb'
 
 networks:
   inception:

@@ -9,7 +9,7 @@ re:
 	docker-compose -f ./srcs/docker-compose.yaml up
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yaml down
+	docker-compose -f ./srcs/docker-compose.yaml down -v
 
 fclean:
 	docker system prune -af
