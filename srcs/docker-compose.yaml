@@ -4,27 +4,14 @@ services:
   mariadb:
     image: mariadb
     container_name: mariadb
+    env_file: .env
     networks:
       - inception
     build: requirements/mariadb
-    env_file: .env
     volumes:
       - mariadb:/var/lib/mysql
     ports:
       - "3306"
-  ngnix:
-    image: nginx
-    container_name: nginx
-    networks:
-    - inception
-    build: requirements/nginx
-    env_file: .env
-    volumes:
-      - wordpress:/var/www/wordpress
-    ports:
-      - "443:443"
-    depends_on:
-      - wordpress
   wordpress:
     image: wordpress
     container_name: wordpress
@@ -38,6 +25,19 @@ services:
       - "9000"
     depends_on:
       - "mariadb"
+  ngnix:
+    image: nginx
+    container_name: nginx
+    env_file: .env
+    networks:
+    - inception
+    build: requirements/nginx
+    volumes:
+      - wordpress:/var/www/wordpress
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
 
 volumes:
   wordpress:
