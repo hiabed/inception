@@ -57,6 +57,6 @@ volumes:
 
 networks:
   inception:
-    name: inception
+    name: my_network
     driver: bridge
 
