@@ -15,7 +15,6 @@ RUN cd /var/www && tar -xzf wordpress-6.4.2-fr_FR.tar.gz && rm wordpress-6.4.2-f
 
 RUN	chown -R root:root /var/www/wordpress
 
-
 RUN apt-get install wordpress -y
 
 RUN sed -i 's@listen = /run/php/php7.3-fpm.sock@listen = wordpress:9000@' /etc/php/7.3/fpm/pool.d/www.conf
@@ -24,8 +23,6 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-# Copy your executable or script into the container
-
 COPY conf/auto_config.sh /
 
 EXPOSE 9000
@@ -33,5 +30,4 @@ EXPOSE 9000
 RUN mkdir run/php
 
 CMD [ "bash", "auto_config.sh" ]
-
 

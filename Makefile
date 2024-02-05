@@ -17,7 +17,7 @@ stop:
 start:
 	docker-compose -f ./srcs/docker-compose.yml start
 
-fclean:
+fclean: clean rm
 	docker system prune -af
 
 rm:
