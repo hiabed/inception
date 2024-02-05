@@ -18,7 +18,6 @@ start:
 	docker-compose -f ./srcs/docker-compose.yml start
 
 fclean: clean rm
-	docker system prune -af
 
 rm:
 	sudo rm -rf /home/mhassani/data/wordpress/*
