@@ -13,7 +13,7 @@ RUN wget https://fr.wordpress.org/wordpress-6.4.2-fr_FR.tar.gz -P /var/www
 
 RUN cd /var/www && tar -xzf wordpress-6.4.2-fr_FR.tar.gz && rm wordpress-6.4.2-fr_FR.tar.gz
 
-RUN		chown -R root:root /var/www/wordpress
+RUN	chown -R root:root /var/www/wordpress
 
 
 RUN apt-get install wordpress -y
@@ -34,6 +34,6 @@ EXPOSE 9000
 
 RUN mkdir run/php
 
-CMD [ "./auto_config.sh" ]
+CMD [ "bash", "auto_config.sh" ]
 
 

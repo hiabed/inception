@@ -14,8 +14,6 @@ RUN mkdir -p /etc/nginx/ssl
 
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=MA/ST=FMK/L=FES/O=1337/OU=42/CN=mhassani.42.fr/UID=mhassni"
 
-#COPY tools/index.html /var/www/wordpress
-
-COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default.conf 
+COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default.conf
 
 CMD [ "nginx", "-g" ,"daemon off;"]

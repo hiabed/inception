@@ -10,4 +10,6 @@ RUN sed -i 's/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/' /etc/mysql/
 
 EXPOSE 3306
 
+RUN chmod 777 script.sh
+
 CMD [ "bash", "script.sh" ]
