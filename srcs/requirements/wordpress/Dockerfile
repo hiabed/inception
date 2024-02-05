@@ -28,8 +28,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY conf/auto_config.sh /
 
-RUN chmod +x auto_config.sh
-
 EXPOSE 9000
 
 RUN mkdir run/php
