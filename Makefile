@@ -4,12 +4,10 @@ all :
 run :
 	docker-compose -f ./srcs/docker-compose.yml up -d --build
 
-re:
-	docker-compose -f ./srcs/docker-compose.yml down
-	docker-compose -f ./srcs/docker-compose.yml up -d
-
 clean:
 	docker-compose -f ./srcs/docker-compose.yml down -v
+
+re: clean run
 
 stop:
 	docker-compose -f ./srcs/docker-compose.yml stop
@@ -17,8 +15,10 @@ stop:
 start:
 	docker-compose -f ./srcs/docker-compose.yml start
 
-fclean: clean rm
+restart: stop start
 
-rm:
+rmv:
 	sudo rm -rf /home/mhassani/data/wordpress/*
 	sudo rm -rf /home/mhassani/data/mariadb/*
+
+fclean: clean rm
