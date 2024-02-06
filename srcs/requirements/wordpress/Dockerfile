@@ -15,8 +15,6 @@ RUN cd /var/www && tar -xzf wordpress-6.4.2-fr_FR.tar.gz && rm wordpress-6.4.2-f
 
 RUN chmod -R 777 /var/www/wordpress
 
-RUN apt-get install wordpress -y
-
 RUN sed -i 's@listen = /run/php/php7.4-fpm.sock@listen = wordpress:9000@' /etc/php/7.4/fpm/pool.d/www.conf
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
