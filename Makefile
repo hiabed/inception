@@ -21,4 +21,4 @@ rmv:
 	sudo rm -rf /home/mhassani/data/wordpress/*
 	sudo rm -rf /home/mhassani/data/mariadb/*
 
-fclean: clean rm
+fclean: clean rmv
